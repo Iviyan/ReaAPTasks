@@ -1,5 +1,5 @@
 #include "task3.cpp"
 
 int main() {
-    return main_();
+    return _main();
 }

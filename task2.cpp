@@ -74,7 +74,7 @@ pair<int, int>& normalizeFraction(pair<int, int> &f) {
     return f;
 }
 
-int main_() {
+int _main() {
     /*auto fv = factorize(201);
     for (int n : fv) cout << n << " ";
     return 0;*/

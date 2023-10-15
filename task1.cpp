@@ -4,7 +4,7 @@ int sumDigits(int number);
 bool isLeapYear(int year);
 int getNumberOfDays(int month, int year);
 
-int main1() {
+int _main() {
 
     std::cout << "Введите год: ";
     int year = 0;;

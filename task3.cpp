@@ -75,7 +75,7 @@ route hamiltonianCycle(vector<point> const &points, double const *const *m, size
     return route;
 }
 
-int main_() {
+int _main() {
     SetConsoleOutputCP(65001);
 
     vector<point> points;

@@ -4,6 +4,8 @@
 #include <cmath>
 #include "utils.h"
 #include <windows.h>
+#include <fstream>
+#include <algorithm>
 
 #define PRINTALL
 //#define TESTDATA
@@ -35,7 +37,7 @@ std::ostream &operator<<(std::ostream &os, const route &r) {
         os << r.path[0];
     for (int i = 1; i < r.path.size(); i++)
         os << " -> " << r.path[i];
-    cout << " = " << r.length;
+    os << " = " << r.length;
     return os;
 }
 
@@ -128,6 +130,8 @@ int _main() {
             m[y][x] = round(distance, 2);
         }
     }
+    std::ofstream outputFile("output.txt");
+    if (outputFile.is_open()) {
 
     print_matrix(m, size, size);
     cout << endl;
@@ -140,6 +144,8 @@ int _main() {
 #endif
 
         cout << "Кратчайший гамильтонов путь: " << endl << route << endl << endl;
+            outputFile << "Кратчайший гамильтонов путь:" << endl;
+            outputFile << route << endl << endl;
     }
 
     {
@@ -151,8 +157,13 @@ int _main() {
 #endif
 
         cout << "Кратчайший гамильтонов цикл: " << endl << route << endl;
+            outputFile << "Кратчайший гамильтонов цикл:" << endl;
+            outputFile << route << endl << endl;
+            outputFile.close();
     }
-
+    } else {
+        cout << "Ошибка при открытии файла для записи." << endl;
+    }
     for (int i = 0; i < size; i++)
         delete[] m[i];
     delete[] m;

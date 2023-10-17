@@ -19,6 +19,7 @@ struct point {
     int y;
 
     point() = default;
+
     point(char name, int x, int y) : name{name}, x{x}, y{y}, index{0} {}
 };
 
@@ -133,34 +134,34 @@ int _main() {
     std::ofstream outputFile("output.txt");
     if (outputFile.is_open()) {
 
-    print_matrix(m, size, size);
-    cout << endl;
+        print_matrix(m, size, size);
+        cout << endl;
 
-    {
-        route route = hamiltonianPath(points, m, size);
+        {
+            route route = hamiltonianPath(points, m, size);
 
 #ifdef PRINTALL
-        cout << endl;
+            cout << endl;
 #endif
 
-        cout << "Кратчайший гамильтонов путь: " << endl << route << endl << endl;
+            cout << "Кратчайший гамильтонов путь: " << endl << route << endl << endl;
             outputFile << "Кратчайший гамильтонов путь:" << endl;
             outputFile << route << endl << endl;
-    }
+        }
 
-    {
-        route route = hamiltonianCycle(points, m, size);
+        {
+            route route = hamiltonianCycle(points, m, size);
 
 
 #ifdef PRINTALL
-        cout << endl;
+            cout << endl;
 #endif
 
-        cout << "Кратчайший гамильтонов цикл: " << endl << route << endl;
+            cout << "Кратчайший гамильтонов цикл: " << endl << route << endl;
             outputFile << "Кратчайший гамильтонов цикл:" << endl;
             outputFile << route << endl << endl;
             outputFile.close();
-    }
+        }
     } else {
         cout << "Ошибка при открытии файла для записи." << endl;
     }

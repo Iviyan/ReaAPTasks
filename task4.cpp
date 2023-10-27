@@ -12,10 +12,9 @@ enum class rps { rock, paper, scissors };
 enum class gameResult { win, lose, tie };
 
 struct participant {
-    int number;
     string name;
-    int place;
-    rps move;
+    int place = 0;
+    rps move = rps::rock;
 };
 
 // Let's pretend that this method works like the Console.ReadKey(true) in C#.
@@ -59,7 +58,6 @@ int _main() {
     auto *participants = new participant[participantsCount];
     for (int i = 0; i < participantsCount; ++i) {
         participant &p = participants[i];
-        p.number = i + 1;
         p.name = string("Participant ") + std::to_string(i + 1);
     }
 

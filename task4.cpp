@@ -50,10 +50,12 @@ int _main() {
     auto rd = std::random_device{};
     rnd = std::default_random_engine{rd()};
 
-    cout << "Enter the number of participants: ";
-
     int participantsCount = 0;
-    cin >> participantsCount;
+    do {
+        cout << "Enter the number of participants: ";
+        cin >> participantsCount;
+    }
+    while (participantsCount < 2);
 
     auto *participants = new participant[participantsCount];
     for (int i = 0; i < participantsCount; ++i) {
@@ -105,9 +107,9 @@ int _main() {
             for (;;) {
                 cout << p->name << " > ";
                 char mc = readChar();
-                if (mc == L'r') p->move = rps::rock;
-                else if (mc == L'p') p->move = rps::paper;
-                else if (mc == L's') p->move = rps::scissors;
+                if (mc == 'r') p->move = rps::rock;
+                else if (mc == 'p') p->move = rps::paper;
+                else if (mc == 's') p->move = rps::scissors;
                 else continue;
                 break;
             }

@@ -6,6 +6,13 @@
 #include <iomanip>
 #include <fstream>
 
+// Comment out the line below to use standard input instead of _getch().
+#define USEGETCH
+
+#ifdef USEGETCH
+#include "conio.h"
+#endif
+
 using std::cout, std::cin, std::endl, std::string, std::vector;
 
 enum class rps { rock, paper, scissors };
@@ -17,12 +24,21 @@ struct participant {
     rps move = rps::rock;
 };
 
-// Let's pretend that this method works like the Console.ReadKey(true) in C#.
+// This method should work like the Console.ReadKey(true) in C# if USEGETCH defined.
+#ifndef USEGETCH
 char readChar() {
+#else
+char readChar(bool newLineAfterInput = true) {
+#endif
     char c;
+#ifndef USEGETCH
     cin >> c;
+#else
+    cout.flush();
+    c = _getch();
+    if (newLineAfterInput) cout << endl;
+#endif
     return c;
-    //return _getch(); // <-- It doesn't work for me
 }
 
 gameResult getResult(rps r1, rps r2) {
